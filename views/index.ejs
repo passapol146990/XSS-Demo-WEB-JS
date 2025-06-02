@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ข้อความทั้งหมด</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="img/logo.jpg" type="image/x-icon" />
+  </head>
+  <body>
+    <h1>ข้อความทั้งหมด</h1>
+    <a href="/create">+ เพิ่มข้อความ</a>
+    <ul id="messages"></ul>
+    <script>
+      const messages = document.getElementById("messages");
+      async function getMessages() {
+        const response = await fetch("/api/messages");
+        const data = await response.json();
+        messages.innerHTML = "";
+        let e = "";
+        data.forEach((doc) => {
+          e += `<li>${doc.message}</li>`;
+        });
+        messages.innerHTML = e;
+      }
+      getMessages();
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <!-- const li = document.createElement("li");
+          li.textContent = doc.message;
+          messages.appendChild(li);  -->
