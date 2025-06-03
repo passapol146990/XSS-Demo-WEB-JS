@@ -15,11 +15,11 @@
       async function getMessages() {
         const response = await fetch("/api/messages");
         const data = await response.json();
+        let  e = "";
         data.forEach((doc) => {
-          const li = document.createElement("li");
-          li.textContent = doc.message;
-          messages.appendChild(li);
+          e += `<li>${doc.message}</li>`;
         });
+        messages.innerHTML = e;
       }
       getMessages();
     </script>
